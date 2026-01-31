@@ -1,0 +1,72 @@
+.container {
+  max-width: 1240px;
+  margin: auto;
+}
+
+@media (max-width: 1240px) {
+  .container {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+/* Remove default react-tabs bottom border */
+.react-tabs__tab-list {
+  border-bottom: none !important;
+}
+
+/* Custom Animation for Tab switching */
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Swiper Styles */
+.testimonial-slider .swiper-button-next,
+.testimonial-slider .swiper-button-prev {
+  color: #F7A582 !important;
+  /* The orange/peach color from Figma */
+  background: white;
+  width: 50px !important;
+  height: 50px !important;
+  border: 1px solid #F7A582;
+  border-radius: 50%;
+}
+
+.testimonial-slider .swiper-button-next:after,
+.testimonial-slider .swiper-button-prev:after {
+  font-size: 20px !important;
+  font-weight: bold;
+}
+
+
+/* On mobile, move buttons slightly or hide if you prefer dots */
+@media (max-width: 768px) {
+
+  .testimonial-slider .swiper-button-next,
+  .testimonial-slider .swiper-button-prev {
+    display: none;
+    /* Often cleaner on mobile to use touch swipe only */
+  }
+}
+
+/* Change active button style if needed */
+.testimonial-slider .swiper-button-next {
+  background: #F7A582 !important;
+  color: white !important;
+}
+.testimonial-slider .swiper-button-prev {
+  background: #F7A582 !important;
+  color: white !important;
+}
