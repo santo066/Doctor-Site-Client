@@ -3,47 +3,51 @@ import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWith
 import { app } from "../Firebase/fitebase.config";
 
 
+
 export const AuthContext = createContext(null)
 
-const auth = getAuth(app);
+export default function AuthProviders({ children }) {
 
-export default function AuthProvider({ children }) {
+    const auth = getAuth(app);
 
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(null)
 
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    const signIn = (email, password) => {
+    const LogOut = () => {
+        return signOut(auth);
+    }
+
+    const SignIn = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    const logOut = () => {
-        return signOut(auth)
-    }
-
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log('user is here', currentUser)
+        const onSubscribe = onAuthStateChanged(auth, currentUser => {
+            console.log("user is definr", currentUser)
             setUser(currentUser)
         })
         return () => {
-            unSubscribe();
+            onSubscribe();
         }
     }, [])
+
+
 
     const authInfo = {
         user,
         createUser,
-        logOut,
-        signIn,
-
+        LogOut,
+        SignIn
     }
 
     return (
         <AuthContext.Provider value={authInfo}>
-            {children}
+            {
+                children
+            }
         </AuthContext.Provider>
     )
 }

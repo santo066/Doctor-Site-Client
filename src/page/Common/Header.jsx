@@ -1,17 +1,18 @@
+import { useContext } from 'react';
 import logo from '../../../src/assets/logo.png'
-
-import React, { useContext } from 'react';
-import { AuthContext } from '../../Provider/AuthProvider';
+import { AuthContext } from '../../Provider/AuthProviders';
 
 export default function Header() {
 
-    const { user, logOut } = useContext(AuthContext)
 
-    const hendelLogout = () => {
-        logOut()
+    const { user, LogOut } = useContext(AuthContext);
+
+    const hendelSignOut = () => {
+        LogOut()
             .then()
             .catch()
     }
+
 
     const header_link = (
         <>
@@ -20,7 +21,7 @@ export default function Header() {
             <li><a href="#" className="md:text-white text-black hover:text-accent-peach transition-colors text-2xl md:text-[18px]">Appointment</a></li>
             {
                 user ?
-                    <li><a onClick={hendelLogout} href="/" className="md:text-white text-black hover:text-accent-peach transition-colors text-2xl md:text-[18px]">Sign Out</a></li>
+                    <li><a onClick={hendelSignOut} href="/" className="md:text-white text-black hover:text-accent-peach transition-colors text-2xl md:text-[18px]">Sign Out</a></li>
                     :
                     <li><a href="/signUp" className="md:text-white text-black hover:text-accent-peach transition-colors text-2xl md:text-[18px]">Login</a></li>
             }

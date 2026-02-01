@@ -1,30 +1,29 @@
 import React, { useContext } from 'react';
 import doctorImg from '.././../assets/signup.png';
-import { AuthContext } from '../../Provider/AuthProvider';
+import { AuthContext } from '../../Provider/AuthProviders';
 
 
 const Login = () => {
 
-    const { signIn } = useContext(AuthContext);
+
+    const { SignIn } = useContext(AuthContext)
 
     const hendelSignIn = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         const form = new FormData(e.currentTarget)
+
         const email = form.get("email")
         const password = form.get("password")
 
-        console.log(email, password)
-
-        signIn(email, password)
+        SignIn(email, password)
             .then(result => {
                 console.log(result)
             })
             .catch(error => {
                 console.error(error)
             })
+
     }
-
-
 
     return (
         <div className="flex flex-col lg:flex-row min-h-screen w-full font-sans">
@@ -98,9 +97,9 @@ const Login = () => {
                     {/* Footer Link */}
                     <p className="text-center text-sm text-gray-500 mt-10">
                         Please register at first. Go to
-                        <button className="text-[#F2A383] font-bold hover:underline ml-1">
+                        <a href='/signUp' className="text-[#F2A383] font-bold hover:underline ml-1">
                             SIGN UP
-                        </button>
+                        </a>
                     </p>
                 </div>
             </div>

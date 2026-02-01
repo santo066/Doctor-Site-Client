@@ -1,29 +1,30 @@
 import React, { useContext } from 'react';
 import doctorImg from '.././../assets/signup.png';
-import { AuthContext } from '../../Provider/AuthProvider';
+import { AuthContext } from '../../Provider/AuthProviders';
 
 const SignUp = () => {
 
     const { createUser } = useContext(AuthContext)
 
-    const hendelSignUp = e => {
+    const hendelSignUp = (e) => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
+
         const email = form.get("email");
         const password = form.get("password");
 
         createUser(email, password)
             .then(result => {
-                console.log(result)
+                console.log(result);
             })
             .catch(error => {
-                console.error(error)
+                console.error(error);
             })
     }
 
 
     return (
-        <div className="flex flex-col lg:flex-row min-h-screen w-full font-sans">
+        <div className="flex flex-col lg:flex-row min-h-screen w-full font-sans pt-20">
 
             <div className="bg-[#07332F] lg:w-1/2 flex items-center justify-center p-10 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10 pointer-events-none">
